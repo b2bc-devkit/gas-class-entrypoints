@@ -1,0 +1,43 @@
+{
+  "name": "@b2bc-devkit/gas-class-entrypoints",
+  "version": "1.0.0",
+  "description": "Vite/Rollup plugin that exposes static methods of exported classes as top-level Google Apps Script functions",
+  "type": "module",
+  "license": "GPL-3.0-or-later",
+  "main": "./src/GasClassEntrypoints.mjs",
+  "module": "./src/GasClassEntrypoints.mjs",
+  "exports": {
+    ".": {
+      "import": "./src/GasClassEntrypoints.mjs"
+    }
+  },
+  "files": [
+    "src/**/*"
+  ],
+  "keywords": [
+    "vite",
+    "rollup",
+    "google-apps-script",
+    "gas",
+    "clasp",
+    "plugin",
+    "class-entrypoints"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/b2bc-devkit/gas-class-entrypoints.git"
+  },
+  "homepage": "https://github.com/b2bc-devkit/gas-class-entrypoints#readme",
+  "bugs": {
+    "url": "https://github.com/b2bc-devkit/gas-class-entrypoints/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "vite": ">=5.0.0"
+  },
+  "scripts": {
+    "publish:npm": "node scripts/publish-npm.mjs"
+  }
+}

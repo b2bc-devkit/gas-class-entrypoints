@@ -1,0 +1,279 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 560" width="820" height="560" font-family="monospace">
+  <defs>
+    <style>
+      .bg       { fill: #0d1117; }
+      .text     { fill: #e6edf3; font-size: 14px; }
+      .dim      { fill: #7d8590; font-size: 14px; }
+      .accent   { fill: #58a6ff; }
+      .green    { fill: #3fb950; }
+      .orange   { fill: #d29922; }
+      .purple   { fill: #bc8cff; }
+      .red      { fill: #ff7b72; }
+      .title    { fill: #58a6ff; font-size: 20px; font-weight: bold; }
+      .subtitle { fill: #e6edf3; font-size: 18px; font-weight: bold; }
+      .code-bg  { fill: #161b22; stroke: #30363d; stroke-width: 1.5; rx: 10; }
+      .badge    { stroke-width: 1; rx: 6; }
+      .badge-text { font-size: 13px; font-weight: bold; }
+      .arrow    { stroke: #58a6ff; stroke-width: 2; stroke-dasharray: 6 4; fill: none; }
+      .arrowhead { fill: #58a6ff; }
+      .success-box { fill: #3fb950; fill-opacity: 0.08; stroke: #3fb950; stroke-width: 1.5; rx: 10; }
+
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect class="bg" width="820" height="560"/>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       Frame 1 — Your TypeScript source
+       ════════════════════════════════════════════════════════════════ -->
+  <g id="frame1" opacity="0">
+    <animate attributeName="opacity" dur="40s" repeatCount="indefinite" calcMode="discrete" values="1;0;0;0;0"/>
+    <rect class="bg" width="820" height="560"/>
+
+    <!-- Title -->
+    <text class="title" x="30" y="38">Step 1/5</text>
+    <text class="subtitle" x="30" y="65">Your TypeScript source</text>
+
+    <!-- Badge: src/index.ts -->
+    <rect class="badge" x="30" y="85" width="120" height="26" fill="#d29922" fill-opacity="0.18" stroke="#d29922"/>
+    <text class="badge-text orange" x="40" y="103">src/index.ts</text>
+
+    <!-- Code box -->
+    <rect class="code-bg" x="30" y="120" width="760" height="210"/>
+    <text class="purple" x="48" y="148" font-size="14">export class GasEntrypoints {</text>
+    <text class="green"  x="65" y="178" font-size="14">static demoCreate() {</text>
+    <text class="text"   x="82" y="198" font-size="14">return SpreadsheetApp.create("New");</text>
+    <text class="green"  x="65" y="218" font-size="14">}</text>
+    <text class="green"  x="65" y="248" font-size="14">static demoRead() {</text>
+    <text class="text"   x="82" y="268" font-size="14">return SpreadsheetApp.getActive();</text>
+    <text class="green"  x="65" y="288" font-size="14">}</text>
+    <text class="purple" x="48" y="308" font-size="14">}</text>
+
+    <!-- Explanation -->
+    <text class="dim" x="30" y="360">Classes with static methods — invisible to GAS as-is.</text>
+    <text class="dim" x="30" y="385">GAS only discovers top-level  function Name() {}  declarations.</text>
+
+    <!-- Problem badge -->
+    <rect class="badge" x="30" y="420" width="90" height="26" fill="#ff7b72" fill-opacity="0.18" stroke="#ff7b72"/>
+    <text class="badge-text red" x="40" y="438">PROBLEM</text>
+    <text class="red" x="135" y="438" font-size="14">GAS cannot call these — they are hidden inside the class.</text>
+  </g>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       Frame 2 — tsc compiles to JavaScript
+       ════════════════════════════════════════════════════════════════ -->
+  <g id="frame2" opacity="0">
+    <animate attributeName="opacity" dur="40s" repeatCount="indefinite" calcMode="discrete" values="0;1;0;0;0"/>
+    <rect class="bg" width="820" height="560"/>
+
+    <text class="title" x="30" y="38">Step 2/5</text>
+    <text class="subtitle" x="30" y="65">tsc compiles to JavaScript</text>
+
+    <!-- Left box: src/index.ts -->
+    <rect class="badge" x="30" y="85" width="120" height="26" fill="#d29922" fill-opacity="0.18" stroke="#d29922"/>
+    <text class="badge-text orange" x="40" y="103">src/index.ts</text>
+    <rect class="code-bg" x="30" y="120" width="340" height="110"/>
+    <text class="purple" x="48" y="148" font-size="14">export class GasEntrypoints {</text>
+    <text class="dim"    x="65" y="168" font-size="14">static demoCreate() { ... }</text>
+    <text class="dim"    x="65" y="188" font-size="14">static demoRead()   { ... }</text>
+    <text class="purple" x="48" y="208" font-size="14">}</text>
+
+    <!-- Arrow -->
+    <line class="arrow" x1="380" y1="175" x2="445" y2="175"/>
+    <polygon class="arrowhead" points="450,175 440,170 440,180"/>
+    <text class="accent badge-text" x="398" y="165">tsc</text>
+
+    <!-- Right box: build/index.js -->
+    <rect class="badge" x="460" y="85" width="140" height="26" fill="#3fb950" fill-opacity="0.18" stroke="#3fb950"/>
+    <text class="badge-text green" x="470" y="103">build/index.js</text>
+    <rect class="code-bg" x="460" y="120" width="330" height="110"/>
+    <text class="purple" x="478" y="148" font-size="14">export class GasEntrypoints {</text>
+    <text class="dim"    x="495" y="168" font-size="14">static demoCreate() { ... }</text>
+    <text class="dim"    x="495" y="188" font-size="14">static demoRead()   { ... }</text>
+    <text class="purple" x="478" y="208" font-size="14">}</text>
+
+    <!-- Explanation -->
+    <text class="dim" x="30" y="275">TypeScript is compiled, but the output is still ES modules.</text>
+    <text class="dim" x="30" y="300">The plugin reads build/index.js to discover exports.</text>
+
+    <rect class="badge" x="30" y="345" width="140" height="26" fill="#3fb950" fill-opacity="0.18" stroke="#3fb950"/>
+    <text class="badge-text green" x="40" y="363">build/index.js</text>
+    <text class="text" x="185" y="363" font-size="14">Plugin auto-detects:</text>
+    <rect class="code-bg" x="30" y="385" width="760" height="45"/>
+    <text class="dim" x="48" y="413">build/index.js  ← flat layout    OR    build/src/index.js  ← mirrored rootDir</text>
+  </g>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       Frame 3 — Plugin scans exports & creates virtual entry
+       ════════════════════════════════════════════════════════════════ -->
+  <g id="frame3" opacity="0">
+    <animate attributeName="opacity" dur="40s" repeatCount="indefinite" calcMode="discrete" values="0;0;1;0;0"/>
+    <rect class="bg" width="820" height="560"/>
+
+    <text class="title" x="30" y="38">Step 3/5</text>
+    <text class="subtitle" x="30" y="65">Plugin scans exports &amp; creates virtual entry</text>
+
+    <!-- Left: exports detected -->
+    <rect class="badge" x="30" y="85" width="140" height="26" fill="#3fb950" fill-opacity="0.18" stroke="#3fb950"/>
+    <text class="badge-text green" x="40" y="103">build/index.js</text>
+    <rect class="code-bg" x="30" y="120" width="340" height="80"/>
+    <text class="purple" x="48" y="148" font-size="14">export { GasEntrypoints }</text>
+    <text class="dim"    x="48" y="168" font-size="14">// detected exports:</text>
+    <text class="accent" x="48" y="188" font-size="14">//   → "GasEntrypoints"</text>
+
+    <!-- Arrow: detect -->
+    <line class="arrow" x1="380" y1="160" x2="445" y2="160"/>
+    <polygon class="arrowhead" points="450,160 440,155 440,165"/>
+    <text class="accent badge-text" x="390" y="150">detect</text>
+
+    <!-- Right: config -->
+    <rect class="badge" x="460" y="85" width="200" height="26" fill="#d29922" fill-opacity="0.18" stroke="#d29922"/>
+    <text class="badge-text orange" x="470" y="103">classEntrypoints config</text>
+    <rect class="code-bg" x="460" y="120" width="330" height="100"/>
+    <text class="orange" x="478" y="148" font-size="14">classEntrypoints: {</text>
+    <text class="text"   x="495" y="168" font-size="14">GasEntrypoints: [</text>
+    <text class="green"  x="512" y="188" font-size="14">"demoCreate", "demoRead"</text>
+    <text class="text"   x="495" y="208" font-size="14">]</text>
+
+    <!-- Down arrow -->
+    <line class="arrow" x1="410" y1="230" x2="410" y2="290"/>
+    <polygon class="arrowhead" points="410,295 405,285 415,285"/>
+    <rect x="338" y="254" width="138" height="18" rx="4" fill="#0d1117"/>
+    <text class="accent badge-text" x="343" y="267">resolve bindings</text>
+
+    <!-- Virtual entry -->
+    <rect class="badge" x="30" y="305" width="175" height="26" fill="#58a6ff" fill-opacity="0.18" stroke="#58a6ff"/>
+    <text class="badge-text accent" x="40" y="323">virtual: gas-entry</text>
+    <rect class="code-bg" x="30" y="340" width="760" height="155"/>
+    <text class="purple" x="48" y="368" font-size="14">import { GasEntrypoints } from "build/index.js";</text>
+    <text class="text"   x="48" y="403" font-size="14">var __g = typeof globalThis !== 'undefined'</text>
+    <text class="text"   x="132" y="423" font-size="14">? globalThis : this;</text>
+    <text class="green"  x="48" y="458" font-size="14">__g.demoCreate = function(){ return GasEntrypoints.demoCreate(); };</text>
+    <text class="green"  x="48" y="478" font-size="14">__g.demoRead   = function(){ return GasEntrypoints.demoRead(); };</text>
+  </g>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       Frame 4 — generateBundle: stubs + IIFE wrapping
+       ════════════════════════════════════════════════════════════════ -->
+  <g id="frame4" opacity="0">
+    <animate attributeName="opacity" dur="40s" repeatCount="indefinite" calcMode="discrete" values="0;0;0;1;0"/>
+    <rect class="bg" width="820" height="560"/>
+
+    <text class="title" x="30" y="38">Step 4/5</text>
+    <text class="subtitle" x="30" y="65">generateBundle: stubs + IIFE wrapping</text>
+
+    <text class="dim" x="30" y="100">After Rollup bundles everything, the plugin post-processes the output:</text>
+
+    <!-- 1. Stubs -->
+    <rect class="badge" x="30" y="115" width="155" height="26" fill="#d29922" fill-opacity="0.18" stroke="#d29922"/>
+    <text class="badge-text orange" x="40" y="133">1. Prepend stubs</text>
+    <rect class="code-bg" x="30" y="150" width="760" height="65"/>
+    <text class="orange" x="48" y="175" font-size="14">function demoCreate() {}    ← empty stub for GAS parser</text>
+    <text class="orange" x="48" y="195" font-size="14">function demoRead()   {}    ← empty stub for GAS parser</text>
+
+    <!-- 2. IIFE -->
+    <rect class="badge" x="30" y="235" width="150" height="26" fill="#bc8cff" fill-opacity="0.18" stroke="#bc8cff"/>
+    <text class="badge-text purple" x="40" y="253">2. Wrap in IIFE</text>
+    <rect class="code-bg" x="30" y="270" width="760" height="125"/>
+    <text class="purple" x="48" y="298" font-size="14">!function(){</text>
+    <text class="dim"    x="65" y="318" font-size="14">// ... all bundled code lives here ...</text>
+    <text class="green"  x="65" y="338" font-size="14">globalThis.demoCreate = function(){ ... };</text>
+    <text class="green"  x="65" y="358" font-size="14">globalThis.demoRead   = function(){ ... };</text>
+    <text class="purple" x="48" y="383" font-size="14">}();</text>
+
+    <!-- Explanation -->
+    <text class="dim" x="30" y="420">Stubs are parsed first → GAS registers the function names.</text>
+    <text class="dim" x="30" y="445">IIFE runs next → overwrites stubs with real implementations via globalThis.</text>
+    <text class="dim" x="30" y="470">Internal helpers stay scoped inside the IIFE — no global pollution.</text>
+  </g>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       Frame 5 — Result: GAS sees top-level functions
+       ════════════════════════════════════════════════════════════════ -->
+  <g id="frame5" opacity="0">
+    <animate attributeName="opacity" dur="40s" repeatCount="indefinite" calcMode="discrete" values="0;0;0;0;1"/>
+    <rect class="bg" width="820" height="560"/>
+
+    <text class="title" x="30" y="38">Step 5/5</text>
+    <text class="subtitle" x="30" y="65">Result: GAS sees top-level functions</text>
+
+    <!-- Badge -->
+    <rect class="badge" x="30" y="85" width="180" height="26" fill="#3fb950" fill-opacity="0.18" stroke="#3fb950"/>
+    <text class="badge-text green" x="40" y="103">Final bundle (Code.js)</text>
+
+    <!-- Code box -->
+    <rect class="code-bg" x="30" y="120" width="760" height="230"/>
+    <text class="dim"    x="48" y="148" font-size="14">// ── GAS parse-time discovery ──</text>
+    <text class="orange" x="48" y="168" font-size="14">function demoCreate() {}             ← stub</text>
+    <text class="orange" x="48" y="188" font-size="14">function demoRead()   {}             ← stub</text>
+    <text class="dim"    x="48" y="218" font-size="14">// ── Runtime ──</text>
+    <text class="purple" x="48" y="238" font-size="14">!function(){</text>
+    <text class="dim"    x="65" y="258" font-size="14">var GasEntrypoints = /*...*/;</text>
+    <text class="text"   x="65" y="278" font-size="14">var __g = globalThis;</text>
+    <text class="green"  x="65" y="298" font-size="14">__g.demoCreate = function(){</text>
+    <text class="green"  x="82" y="318" font-size="14">return GasEntrypoints.demoCreate();</text>
+    <text class="green"  x="65" y="338" font-size="14">};</text>
+
+    <!-- Success box -->
+    <rect class="success-box" x="30" y="370" width="760" height="125"/>
+    <text class="green" x="50" y="400" font-size="16" font-weight="bold">✓  GAS discovers demoCreate and demoRead at parse time.</text>
+    <text class="text"  x="50" y="430" font-size="14">• Functions appear in the Apps Script editor run menu.</text>
+    <text class="text"  x="50" y="455" font-size="14">• Can be used as trigger targets (onOpen, onEdit, etc.).</text>
+    <text class="text"  x="50" y="480" font-size="14">• Internal module code stays cleanly scoped in the IIFE.</text>
+  </g>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       Countdown overlay — progress dots + "Next slide in: Xs"
+       8 countdown ticks per slide (dur=8s), synced with 40s frame cycle
+       ════════════════════════════════════════════════════════════════ -->
+  <g>
+    <line x1="30" y1="510" x2="790" y2="510" stroke="#30363d" stroke-width="0.5" opacity="0.5"/>
+
+    <!-- Animated progress dots (40s cycle, one active per slide) -->
+    <circle cx="355" cy="535" r="5">
+      <animate attributeName="fill" dur="40s" repeatCount="indefinite" calcMode="discrete" values="#58a6ff;#30363d;#30363d;#30363d;#30363d"/>
+    </circle>
+    <circle cx="379" cy="535" r="5">
+      <animate attributeName="fill" dur="40s" repeatCount="indefinite" calcMode="discrete" values="#30363d;#58a6ff;#30363d;#30363d;#30363d"/>
+    </circle>
+    <circle cx="403" cy="535" r="5">
+      <animate attributeName="fill" dur="40s" repeatCount="indefinite" calcMode="discrete" values="#30363d;#30363d;#58a6ff;#30363d;#30363d"/>
+    </circle>
+    <circle cx="427" cy="535" r="5">
+      <animate attributeName="fill" dur="40s" repeatCount="indefinite" calcMode="discrete" values="#30363d;#30363d;#30363d;#58a6ff;#30363d"/>
+    </circle>
+    <circle cx="451" cy="535" r="5">
+      <animate attributeName="fill" dur="40s" repeatCount="indefinite" calcMode="discrete" values="#30363d;#30363d;#30363d;#30363d;#58a6ff"/>
+    </circle>
+
+    <!-- Static label -->
+    <text x="570" y="539" fill="#7d8590" font-size="13">Next slide in:</text>
+
+    <!-- Animated countdown (8s cycle = 1 tick per second) -->
+    <text x="690" y="539" fill="#58a6ff" font-size="13" font-weight="bold" opacity="0">8s
+      <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="1;0;0;0;0;0;0;0"/>
+    </text>
+    <text x="690" y="539" fill="#58a6ff" font-size="13" font-weight="bold" opacity="0">7s
+      <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;1;0;0;0;0;0;0"/>
+    </text>
+    <text x="690" y="539" fill="#58a6ff" font-size="13" font-weight="bold" opacity="0">6s
+      <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;0;1;0;0;0;0;0"/>
+    </text>
+    <text x="690" y="539" fill="#58a6ff" font-size="13" font-weight="bold" opacity="0">5s
+      <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;0;0;1;0;0;0;0"/>
+    </text>
+    <text x="690" y="539" fill="#58a6ff" font-size="13" font-weight="bold" opacity="0">4s
+      <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;0;0;0;1;0;0;0"/>
+    </text>
+    <text x="690" y="539" fill="#58a6ff" font-size="13" font-weight="bold" opacity="0">3s
+      <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;0;0;0;0;1;0;0"/>
+    </text>
+    <text x="690" y="539" fill="#58a6ff" font-size="13" font-weight="bold" opacity="0">2s
+      <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;0;0;0;0;0;1;0"/>
+    </text>
+    <text x="690" y="539" fill="#58a6ff" font-size="13" font-weight="bold" opacity="0">1s
+      <animate attributeName="opacity" dur="8s" repeatCount="indefinite" calcMode="discrete" values="0;0;0;0;0;0;0;1"/>
+    </text>
+  </g>
+</svg>
