@@ -99,4 +99,4 @@ GAS sees `demoCreate` and `demoRead` as callable top-level functions and they co
 
 ## License
 
-[GPL-3.0-or-later](https://www.gnu.org/licenses/gpl-3.0.html)
+[MIT](LICENSE)

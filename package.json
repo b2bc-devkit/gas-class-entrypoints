@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Vite/Rollup plugin that exposes static methods of exported classes as top-level Google Apps Script functions",
   "type": "module",
-  "license": "GPL-3.0-or-later",
+  "license": "MIT",
   "main": "./src/GasClassEntrypoints.mjs",
   "module": "./src/GasClassEntrypoints.mjs",
   "exports": {
