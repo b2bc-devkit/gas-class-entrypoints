@@ -1,6 +1,6 @@
 {
   "name": "@b2bc-devkit/gas-class-entrypoints",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Vite/Rollup plugin that exposes static methods of exported classes as top-level Google Apps Script functions",
   "type": "module",
   "license": "MIT",
