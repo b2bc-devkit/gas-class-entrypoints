@@ -35,9 +35,31 @@
     "access": "public"
   },
   "peerDependencies": {
+    "rollup": ">=4.0.0",
     "vite": ">=5.0.0"
   },
   "scripts": {
-    "publish:npm": "node scripts/publish-npm.mjs"
+    "build": "wireit",
+    "knip": "wireit",
+    "trivy:scan": "wireit"
+  },
+  "wireit": {
+    "build": {
+      "dependencies": [
+        "knip",
+        "trivy:scan"
+      ]
+    },
+    "knip": {
+      "command": "knip"
+    },
+    "trivy:scan": {
+      "command": "trivy-scan fs . --exit-code 1 --severity HIGH,CRITICAL"
+    }
+  },
+  "devDependencies": {
+    "@b2bc-devkit/trivy-scan": "^1.0.2",
+    "knip": "^6.23.0",
+    "wireit": "^0.14.13"
   }
 }
