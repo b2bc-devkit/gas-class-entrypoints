@@ -1,6 +1,6 @@
 {
   "name": "@b2bc-devkit/gas-class-entrypoints",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Vite/Rollup plugin that exposes static methods of exported classes as top-level Google Apps Script functions",
   "type": "module",
   "license": "MIT",
@@ -54,7 +54,7 @@
       "command": "knip"
     },
     "trivy:scan": {
-      "command": "npx @b2bc-devkit/trivy-scan fs . --exit-code 1 --severity HIGH,CRITICAL"
+      "command": "npx @b2bc-devkit/trivy-scan fs --config trivy.yaml ."
     }
   },
   "devDependencies": {

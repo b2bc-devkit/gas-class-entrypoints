@@ -1,0 +1,33 @@
+# Trivy configuration for @b2bc-devkit/gas-class-entrypoints CVE scanning.
+# Used locally and in CI via wireit (`npm run trivy:scan`).
+# Run: `npx @b2bc-devkit/trivy-scan fs --config trivy.yaml .`
+
+# Fail CI on HIGH or CRITICAL vulnerabilities (blocking gate).
+exit-code: 1
+severity:
+  - HIGH
+  - CRITICAL
+
+# Format: table for local readability; CI overrides to sarif for upload.
+format: table
+
+scan:
+  scanners:
+    - vuln
+  # Skip generated/build directories.
+  skip-dirs:
+    - dist/
+    - build/
+    - out/
+    - node_modules/
+    - .wireit/
+
+pkg:
+  # Include dev dependencies — this project has only devDependencies
+  # (it's a library with no runtime deps). Without this flag trivy
+  # suppresses all packages and reports nothing.
+  include-dev-deps: true
+
+vulnerability:
+  # Also report vulnerabilities without a fix (set true to ignore unfixed).
+  ignore-unfixed: false
